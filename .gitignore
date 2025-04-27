@@ -1,0 +1,60 @@
+########################
+# Archivos/Py            #
+########################
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.egg
+
+########################
+# Entornos virtuales    #
+########################
+venv/
+.env/
+env/
+.venv/
+pip-wheel-metadata/
+
+########################
+# IDEs y editores       #
+########################
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+########################
+# Build / distribución  #
+########################
+build/
+dist/
+*.spec            # PyInstaller
+*.exe             # ejecutables generados
+*.app/
+*.dmg/
+*.msi/
+
+########################
+# Datos / logs locales  #
+########################
+data/
+logs/
+*.log
+*.sqlite          # si usas BD temporal
+*.db
+
+########################
+# Configuración y claves
+########################
+.env              
+*.pem
+*.key
+
+########################
+# SOs                  #
+########################
+.DS_Store
+Thumbs.db
