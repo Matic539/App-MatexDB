@@ -27,9 +27,7 @@ class IngresoTab(ttk.Frame):
         clear_frame(self)
 
         # Fecha
-        ttk.Label(self, text="Fecha de venta:").grid(
-            row=0, column=0, padx=10, pady=10, sticky="w"
-        )
+        ttk.Label(self, text="Fecha de venta:").grid(row=0, column=0, padx=10, pady=10, sticky="w")
         self.fecha_entry = DateEntry(self, date_pattern="yyyy-mm-dd", width=18)
         self.fecha_entry.set_date(date.today())
         self.fecha_entry.grid(row=0, column=1)
@@ -40,9 +38,7 @@ class IngresoTab(ttk.Frame):
         )
 
         # Forma de pago
-        ttk.Label(self, text="Forma de pago:").grid(
-            row=1, column=0, padx=10, pady=10, sticky="w"
-        )
+        ttk.Label(self, text="Forma de pago:").grid(row=1, column=0, padx=10, pady=10, sticky="w")
         self.forma_pago_var = tk.StringVar(value="efectivo")
         ttk.Combobox(
             self,
@@ -103,13 +99,11 @@ class IngresoTab(ttk.Frame):
         frame = ttk.Frame(self)
         frame.grid(row=0, column=3, rowspan=3, padx=20, sticky="n")
 
-        ttk.Label(
-            frame, text="🧾 Detalles de la Compra", font=("Arial", 12, "bold")
-        ).pack(anchor="w")
-
-        self.resumen_lbl = ttk.Label(
-            frame, text="Aquí aparecerán los detalles...", justify="left"
+        ttk.Label(frame, text="🧾 Detalles de la Compra", font=("Arial", 12, "bold")).pack(
+            anchor="w"
         )
+
+        self.resumen_lbl = ttk.Label(frame, text="Aquí aparecerán los detalles...", justify="left")
         self.resumen_lbl.pack(anchor="w")
 
     # ---------------------------------------------------------------- Lógica
@@ -133,9 +127,7 @@ class IngresoTab(ttk.Frame):
                 row=i, column=0, sticky="w"
             )
             var = tk.StringVar(value="0")
-            ttk.Entry(self.products_frame, textvariable=var, width=5).grid(
-                row=i, column=1
-            )
+            ttk.Entry(self.products_frame, textvariable=var, width=5).grid(row=i, column=1)
             self.cantidades[id_prod] = {"var": var, "nombre": nombre, "stock": stock}
 
     def _confirmar(self) -> None:

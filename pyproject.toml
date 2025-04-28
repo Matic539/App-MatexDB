@@ -1,19 +1,13 @@
 [tool.black]
-line-length = 88
+line-length = 100
 target-version = ["py311"]
 
 [tool.isort]
 profile = "black"
 
 [tool.flake8]
-max-line-length = 88
+max-line-length = 100
 extend-select = ["B", "D"]
-extend-ignore = [
-    "D100",  # missing docstring in public module
-    "D103",  # missing docstring in public function
-    "D104",  # missing docstring in public package
-    "D107",  # missing docstring in __init__
-]
 
 [tool.mypy]
 python_version = "3.11"

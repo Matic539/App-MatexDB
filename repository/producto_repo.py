@@ -29,9 +29,7 @@ def _fetch_all(sql: str, params: Sequence[Any] = ()) -> list[tuple]:
 # -------------------------------------------------------------------------
 def obtener_productos() -> list[tuple[int, str, int]]:
     """Lista id, nombre y stock de todos los productos."""
-    return _fetch_all(
-        "SELECT id_producto, nombre, stock FROM productos ORDER BY id_producto"
-    )
+    return _fetch_all("SELECT id_producto, nombre, stock FROM productos ORDER BY id_producto")
 
 
 def obtener_precio(id_prod: int) -> int:
@@ -93,9 +91,7 @@ def actualizar(id_prod: int, precio: int, stock: int) -> None:
 
 
 # ----- Listado y exportación --------------------------------------------
-def listar(
-    *, stock_bajo: bool = False, sin_precio: bool = False
-) -> list[dict[str, Any]]:
+def listar(*, stock_bajo: bool = False, sin_precio: bool = False) -> list[dict[str, Any]]:
     """Devuelve los productos filtrados.
 
     Args:
@@ -129,9 +125,7 @@ def listar(
             ORDER BY p.id_producto
         """
     rows = _fetch_all(sql)
-    return [
-        {"id": r[0], "nombre": r[1], "precio": r[2] or 0, "stock": r[3]} for r in rows
-    ]
+    return [{"id": r[0], "nombre": r[1], "precio": r[2] or 0, "stock": r[3]} for r in rows]
 
 
 def exportar_excel() -> str:

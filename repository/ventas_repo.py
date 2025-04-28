@@ -34,8 +34,7 @@ def insertar_venta(venta: Dict[str, Any], items: Sequence[Dict[str, Any]]) -> in
         )
         id_venta: int = cur.fetchone()[0]
         detalle = [
-            (id_venta, it["id_producto"], it["cantidad"], it["monto_producto"])
-            for it in items
+            (id_venta, it["id_producto"], it["cantidad"], it["monto_producto"]) for it in items
         ]
         cur.executemany(
             """
@@ -110,9 +109,7 @@ def detalle(id_venta: int) -> list[dict[str, Any]]:
     """
     with get_conn() as conn, conn.cursor() as cur:
         cur.execute(sql, (id_venta,))
-        return [
-            {"nombre": r[0], "cantidad": r[1], "monto": r[2]} for r in cur.fetchall()
-        ]
+        return [{"nombre": r[0], "cantidad": r[1], "monto": r[2]} for r in cur.fetchall()]
 
 
 def exportar_excel() -> str:

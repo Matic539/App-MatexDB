@@ -25,9 +25,7 @@ class HistorialTab(ttk.Frame):
     # ------------------------------------------------------------------ UI
     def _build_widgets(self) -> None:
         clear_frame(self)
-        ttk.Label(self, text="Historial de Ventas", font=("Arial", 14, "bold")).pack(
-            pady=10
-        )
+        ttk.Label(self, text="Historial de Ventas", font=("Arial", 14, "bold")).pack(pady=10)
 
         # Filtros
         filtros = ttk.Frame(self)
@@ -41,9 +39,7 @@ class HistorialTab(ttk.Frame):
         self.f_hasta = DateEntry(filtros, date_pattern="yyyy-mm-dd", width=12)
         self.f_hasta.pack(side="left", padx=5)
 
-        ttk.Button(filtros, text="Buscar", command=self._buscar).pack(
-            side="left", padx=5
-        )
+        ttk.Button(filtros, text="Buscar", command=self._buscar).pack(side="left", padx=5)
         ttk.Button(filtros, text="🔄", width=3, command=self._update_table).pack(
             side="left", padx=5
         )
@@ -60,9 +56,7 @@ class HistorialTab(ttk.Frame):
             columns=("ID", "Fecha", "Forma", "Productos", "Monto"),
             show="headings",
         )
-        for col, w in zip(
-            ("ID", "Fecha", "Forma", "Productos", "Monto"), (50, 100, 120, 120, 120)
-        ):
+        for col, w in zip(("ID", "Fecha", "Forma", "Productos", "Monto"), (50, 100, 120, 120, 120)):
             self.tree.heading(col, text=col)
             self.tree.column(col, width=w)
 
@@ -109,9 +103,7 @@ class HistorialTab(ttk.Frame):
         win = tk.Toplevel(self)
         win.title(f"Detalle venta #{id_venta}")
 
-        tree = ttk.Treeview(
-            win, columns=("Producto", "Cant.", "Monto"), show="headings"
-        )
+        tree = ttk.Treeview(win, columns=("Producto", "Cant.", "Monto"), show="headings")
         for col in ("Producto", "Cant.", "Monto"):
             tree.heading(col, text=col)
         tree.pack(fill="both", expand=True, padx=10, pady=10)

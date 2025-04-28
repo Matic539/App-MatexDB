@@ -47,9 +47,7 @@ class VentasService:
                 raise StockError(f"No hay suficiente stock de {datos['nombre']}")
 
             precio_neto = self.producto_repo.obtener_precio(id_prod)
-            monto = int(
-                Decimal(precio_neto * 1.19 * cantidad).quantize(0, ROUND_HALF_UP)
-            )
+            monto = int(Decimal(precio_neto * 1.19 * cantidad).quantize(0, ROUND_HALF_UP))
 
             items.append(
                 {

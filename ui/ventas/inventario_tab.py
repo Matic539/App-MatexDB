@@ -23,32 +23,22 @@ class InventarioTab(ttk.Frame):
     # ------------------------------------------------------------------ UI
     def _build_widgets(self) -> None:
         clear_frame(self)
-        ttk.Label(
-            self, text="Inventario de Productos", font=("Arial", 14, "bold")
-        ).pack(pady=10)
+        ttk.Label(self, text="Inventario de Productos", font=("Arial", 14, "bold")).pack(pady=10)
 
         # Botones de filtro y acciones
         btns = ttk.Frame(self)
         btns.pack(pady=5)
 
-        ttk.Button(btns, text="Ver todos", command=self._update_table).pack(
-            side="left", padx=5
-        )
+        ttk.Button(btns, text="Ver todos", command=self._update_table).pack(side="left", padx=5)
         ttk.Button(
             btns, text="Stock bajo", command=lambda: self._update_table(stock_bajo=True)
         ).pack(side="left", padx=5)
         ttk.Button(
             btns, text="Sin precio", command=lambda: self._update_table(sin_precio=True)
         ).pack(side="left", padx=5)
-        ttk.Button(btns, text="Exportar a Excel", command=self._exportar).pack(
-            side="left", padx=5
-        )
-        ttk.Button(btns, text="Agregar Producto", command=self._nuevo).pack(
-            side="left", padx=5
-        )
-        ttk.Button(btns, text="Eliminar Producto", command=self._eliminar).pack(
-            side="left", padx=5
-        )
+        ttk.Button(btns, text="Exportar a Excel", command=self._exportar).pack(side="left", padx=5)
+        ttk.Button(btns, text="Agregar Producto", command=self._nuevo).pack(side="left", padx=5)
+        ttk.Button(btns, text="Eliminar Producto", command=self._eliminar).pack(side="left", padx=5)
 
         # Tabla
         frame_tabla = ttk.Frame(self)
@@ -142,9 +132,7 @@ class InventarioTab(ttk.Frame):
         win = tk.Toplevel(self)
         win.title(f"Editar: {nombre}")
 
-        ttk.Label(win, text=f"Producto: {nombre}", font=("Arial", 12, "bold")).pack(
-            pady=5
-        )
+        ttk.Label(win, text=f"Producto: {nombre}", font=("Arial", 12, "bold")).pack(pady=5)
 
         ttk.Label(win, text="Precio neto:").pack()
         precio_var = tk.StringVar(value=str(precio).replace("$", "").replace(".", ""))
@@ -156,9 +144,7 @@ class InventarioTab(ttk.Frame):
 
         def confirmar():
             try:
-                self.service.modificar(
-                    int(id_prod), int(precio_var.get()), int(stock_var.get())
-                )
+                self.service.modificar(int(id_prod), int(precio_var.get()), int(stock_var.get()))
             except Exception as exc:
                 popup_error(str(exc))
                 return
