@@ -1,0 +1,12 @@
+# requirements-dev.txt
+black
+isort
+flake8
+flake8-bugbear
+flake8-docstrings
+mypy
+pre-commit
+pytest
+pytest-postgresql       # o pytest-sqlite, según tu stack de tests
+pyinstaller             # solo si empaquetas en la misma máquina
+sphinx                  # o mkdocs-material, si generas docs ahí

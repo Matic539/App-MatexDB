@@ -1,3 +1,5 @@
+"""Package utils."""
+
 from .format_utils import format_money
 from .validation_utils import is_int, is_valid_date
 
