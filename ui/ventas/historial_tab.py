@@ -40,12 +40,8 @@ class HistorialTab(ttk.Frame):
         self.f_hasta.pack(side="left", padx=5)
 
         ttk.Button(filtros, text="Buscar", command=self._buscar).pack(side="left", padx=5)
-        ttk.Button(filtros, text="🔄", width=3, command=self._update_table).pack(
-            side="left", padx=5
-        )
-        ttk.Button(filtros, text="Exportar a Excel", command=self._exportar).pack(
-            side="left", padx=5
-        )
+        ttk.Button(filtros, text="🔄", width=3, command=self._update_table).pack(side="left", padx=5)
+        ttk.Button(filtros, text="Exportar a Excel", command=self._exportar).pack(side="left", padx=5)
 
         # Tabla
         frame_tabla = ttk.Frame(self)
@@ -63,9 +59,7 @@ class HistorialTab(ttk.Frame):
         self.tree.pack(fill="both", expand=True)
         self.tree.bind("<Double-1>", self._detalle)
 
-        ttk.Scrollbar(frame_tabla, orient="vertical", command=self.tree.yview).pack(
-            side="right", fill="y"
-        )
+        ttk.Scrollbar(frame_tabla, orient="vertical", command=self.tree.yview).pack(side="right", fill="y")
 
     # ---------------------------------------------------------------- Acciones
     def _update_table(self, rango: Tuple[str, str] | None = None) -> None:

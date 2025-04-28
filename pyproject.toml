@@ -1,13 +1,14 @@
 [tool.black]
-line-length = 100
+line-length = 160
 target-version = ["py311"]
 
 [tool.isort]
 profile = "black"
 
 [tool.flake8]
-max-line-length = 100
+max-line-length = 160
 extend-select = ["B", "D"]
+extend-ignore = ["E501"]
 
 [tool.mypy]
 python_version = "3.11"

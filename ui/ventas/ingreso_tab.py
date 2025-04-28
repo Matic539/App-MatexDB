@@ -33,9 +33,7 @@ class IngresoTab(ttk.Frame):
         self.fecha_entry.grid(row=0, column=1)
 
         # Botón de refresco
-        ttk.Button(self, text="🔄", width=3, command=self._refresh).grid(
-            row=0, column=2, sticky="e", padx=5
-        )
+        ttk.Button(self, text="🔄", width=3, command=self._refresh).grid(row=0, column=2, sticky="e", padx=5)
 
         # Forma de pago
         ttk.Label(self, text="Forma de pago:").grid(row=1, column=0, padx=10, pady=10, sticky="w")
@@ -62,9 +60,7 @@ class IngresoTab(ttk.Frame):
             style="Accent.TButton",
         ).grid(row=4, column=0, columnspan=2, pady=10)
 
-        ttk.Button(self, text="Guardar venta", command=self._guardar).grid(
-            row=5, column=0, columnspan=2, pady=5
-        )
+        ttk.Button(self, text="Guardar venta", command=self._guardar).grid(row=5, column=0, columnspan=2, pady=5)
 
         self._cargar_productos()
 
@@ -99,9 +95,7 @@ class IngresoTab(ttk.Frame):
         frame = ttk.Frame(self)
         frame.grid(row=0, column=3, rowspan=3, padx=20, sticky="n")
 
-        ttk.Label(frame, text="🧾 Detalles de la Compra", font=("Arial", 12, "bold")).pack(
-            anchor="w"
-        )
+        ttk.Label(frame, text="🧾 Detalles de la Compra", font=("Arial", 12, "bold")).pack(anchor="w")
 
         self.resumen_lbl = ttk.Label(frame, text="Aquí aparecerán los detalles...", justify="left")
         self.resumen_lbl.pack(anchor="w")
@@ -120,12 +114,8 @@ class IngresoTab(ttk.Frame):
         for w in self.products_frame.winfo_children():
             w.destroy()
 
-        for i, (id_prod, nombre, stock) in enumerate(
-            self.service.producto_repo.obtener_productos()
-        ):
-            ttk.Label(self.products_frame, text=f"{nombre} (Stock: {stock})").grid(
-                row=i, column=0, sticky="w"
-            )
+        for i, (id_prod, nombre, stock) in enumerate(self.service.producto_repo.obtener_productos()):
+            ttk.Label(self.products_frame, text=f"{nombre} (Stock: {stock})").grid(row=i, column=0, sticky="w")
             var = tk.StringVar(value="0")
             ttk.Entry(self.products_frame, textvariable=var, width=5).grid(row=i, column=1)
             self.cantidades[id_prod] = {"var": var, "nombre": nombre, "stock": stock}

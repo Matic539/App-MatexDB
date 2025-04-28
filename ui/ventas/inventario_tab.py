@@ -30,12 +30,8 @@ class InventarioTab(ttk.Frame):
         btns.pack(pady=5)
 
         ttk.Button(btns, text="Ver todos", command=self._update_table).pack(side="left", padx=5)
-        ttk.Button(
-            btns, text="Stock bajo", command=lambda: self._update_table(stock_bajo=True)
-        ).pack(side="left", padx=5)
-        ttk.Button(
-            btns, text="Sin precio", command=lambda: self._update_table(sin_precio=True)
-        ).pack(side="left", padx=5)
+        ttk.Button(btns, text="Stock bajo", command=lambda: self._update_table(stock_bajo=True)).pack(side="left", padx=5)
+        ttk.Button(btns, text="Sin precio", command=lambda: self._update_table(sin_precio=True)).pack(side="left", padx=5)
         ttk.Button(btns, text="Exportar a Excel", command=self._exportar).pack(side="left", padx=5)
         ttk.Button(btns, text="Agregar Producto", command=self._nuevo).pack(side="left", padx=5)
         ttk.Button(btns, text="Eliminar Producto", command=self._eliminar).pack(side="left", padx=5)
@@ -56,9 +52,7 @@ class InventarioTab(ttk.Frame):
         self.tree.pack(fill="both", expand=True)
         self.tree.bind("<Double-1>", self._editar)
 
-        ttk.Scrollbar(frame_tabla, orient="vertical", command=self.tree.yview).pack(
-            side="right", fill="y"
-        )
+        ttk.Scrollbar(frame_tabla, orient="vertical", command=self.tree.yview).pack(side="right", fill="y")
 
     # ---------------------------------------------------------------- Acciones
     def _update_table(self, *, stock_bajo: bool = False, sin_precio: bool = False):

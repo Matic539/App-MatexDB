@@ -12,9 +12,7 @@ class ProductoService:
         self.repo = producto_repo
 
     # ------------------------------------------------------------------ API
-    def listar(
-        self, *, stock_bajo: bool = False, sin_precio: bool = False
-    ) -> list[dict[str, int | str]]:
+    def listar(self, *, stock_bajo: bool = False, sin_precio: bool = False) -> list[dict[str, int | str]]:
         """Devuelve productos según filtros.
 
         Args:

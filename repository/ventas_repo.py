@@ -33,9 +33,7 @@ def insertar_venta(venta: Dict[str, Any], items: Sequence[Dict[str, Any]]) -> in
             venta,
         )
         id_venta: int = cur.fetchone()[0]
-        detalle = [
-            (id_venta, it["id_producto"], it["cantidad"], it["monto_producto"]) for it in items
-        ]
+        detalle = [(id_venta, it["id_producto"], it["cantidad"], it["monto_producto"]) for it in items]
         cur.executemany(
             """
             INSERT INTO ventas_producto
