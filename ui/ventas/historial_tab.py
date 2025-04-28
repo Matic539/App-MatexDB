@@ -17,6 +17,7 @@ class HistorialTab(ttk.Frame):
     """Frame con tabla de ventas y filtros por rango de fechas."""
 
     def __init__(self, parent: ttk.Notebook):
+        """Initialize the historial tab."""
         super().__init__(parent)
         self.service = VentasService()
         self._build_widgets()

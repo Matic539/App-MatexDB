@@ -12,6 +12,7 @@ class EliminarTab(tk.Frame):
     """Frame Tkinter que permite eliminar una venta por ID."""
 
     def __init__(self, parent: tk.Misc):
+        """Initialize the eliminar tab."""
         super().__init__(parent)
         self.service = VentasService()
         self._build_widgets()

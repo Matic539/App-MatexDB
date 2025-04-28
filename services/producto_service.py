@@ -9,6 +9,7 @@ class ProductoService:
     """Facade sobre `producto_repo` para encapsular reglas simples de negocio."""
 
     def __init__(self) -> None:
+        """Initialize the product service."""
         self.repo = producto_repo
 
     # ------------------------------------------------------------------ API

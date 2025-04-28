@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import tkinter as tk
 from tkinter import ttk
-from typing import Tuple
 
 from services.producto_service import ProductoService
 from ui import clear_frame, popup_error, popup_success
@@ -15,6 +14,7 @@ class InventarioTab(ttk.Frame):
     """Frame con tabla de productos, filtros y acciones CRUD."""
 
     def __init__(self, parent: ttk.Notebook):
+        """Initialize the inventario tab."""
         super().__init__(parent)
         self.service = ProductoService()
         self._build_widgets()

@@ -18,6 +18,7 @@ class IngresoTab(ttk.Frame):
     """Formulario de venta con listado de productos y cálculo de totales."""
 
     def __init__(self, parent: ttk.Notebook):
+        """Initialize the ingreso tab."""
         super().__init__(parent)
         self.service = VentasService()
         self._build_widgets()

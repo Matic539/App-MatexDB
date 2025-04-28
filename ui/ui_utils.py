@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import tkinter as tk
 from tkinter import messagebox
-from typing import Any
 
 
 def clear_frame(frame: tk.Misc) -> None:

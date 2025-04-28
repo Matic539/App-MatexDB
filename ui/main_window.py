@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import tkinter as tk
 from tkinter import ttk
-from typing import Type
 
 from app import __version__
 from ui.ventas.eliminar_tab import EliminarTab

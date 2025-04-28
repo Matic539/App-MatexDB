@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from decimal import ROUND_HALF_UP, Decimal
-from typing import Dict, List, Sequence
+from typing import Dict, Sequence
 
 from repository import producto_repo, ventas_repo
 
@@ -16,6 +16,7 @@ class VentasService:
     """Orquesta las operaciones de venta y delega en los repositorios."""
 
     def __init__(self) -> None:
+        """Initialize the ventas service."""
         self.producto_repo = producto_repo
 
     # ---------------------------------------------------------------- utils
@@ -61,7 +62,7 @@ class VentasService:
 
     # ---------------------------------------------------------------- API
     def crear_venta(self, *, fecha: str, forma_pago: str, items: Sequence[Dict]) -> int:
-        """Persiste la venta y descuenta stock.
+        """Create a sale record and deduct stock.
 
         Args:
             fecha: `YYYY-MM-DD`.
