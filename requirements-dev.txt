@@ -7,6 +7,10 @@ flake8-docstrings
 mypy
 pre-commit
 pytest
-pytest-postgresql       # o pytest-sqlite, según tu stack de tests
-pyinstaller             # solo si empaquetas en la misma máquina
-sphinx                  # o mkdocs-material, si generas docs ahí
+pytest-postgresql
+pyinstaller
+sphinx
+mkdocs-material
+mkdocstrings[python]
+pymdown-extensions
+mkdocs-mermaid2-plugin

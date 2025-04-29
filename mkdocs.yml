@@ -1,0 +1,50 @@
+site_name: Matex AdminDB
+site_description: Gestor de ventas e inventario para Matex
+site_author: Matías <tu email>
+repo_url: https://github.com/Matic539/App-MatexDB
+theme:
+  name: material
+  language: es
+  features:
+    - navigation.sections
+    - navigation.expand
+    - content.action.edit
+    - content.code.annotate
+  palette:
+    # modo claro/oscuro automático
+    - scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Cambiar a modo oscuro
+    - scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Cambiar a modo claro
+
+nav:
+  - Inicio: index.md
+  - Instalación: install.md
+  - Uso rápido: usage.md
+  - Arquitectura: architecture.md
+  - Referencia API:
+      - Repositorios: api/repository.md
+      - Servicios: api/services.md
+      - UI: api/ui.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: false
+            docstring_style: google
+  - mermaid2
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.highlight
+  - pymdownx.details
