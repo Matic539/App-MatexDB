@@ -4,14 +4,21 @@ on:
   push:
     branches: [ main ]
 
+permissions:                   # <-- añade esta sección
+  contents: write              # permiso para hacer push a contenido
+  pages: write                 # permiso para publicar Pages
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: true  # usa el GITHUB_TOKEN para git push
+          fetch-depth: 0            # clona todo el historial (necesario para gh-pages)
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -20,5 +27,5 @@ jobs:
         run: |
           pip install mkdocs-material mkdocstrings[python] pymdown-extensions mkdocs-mermaid2-plugin
 
-      - name: Publica en GitHub Pages
+      - name: Publicar en GitHub Pages
         run: mkdocs gh-deploy --force
