@@ -18,6 +18,7 @@ jobs:
 
       - name: Instala dependencias
         run: |
-          pip install mkdocs-material mkdocstrings[python] pymdown-extensions
-      - name: Deploy en GitHub Pages
+          pip install mkdocs-material mkdocstrings[python] pymdown-extensions mkdocs-mermaid2-plugin
+
+      - name: Publica en GitHub Pages
         run: mkdocs gh-deploy --force
