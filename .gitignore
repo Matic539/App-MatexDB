@@ -58,3 +58,8 @@ logs/
 ########################
 .DS_Store
 Thumbs.db
+
+# Coverage reports
+.coverage
+htmlcov/
+coverage.xml
