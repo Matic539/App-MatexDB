@@ -26,6 +26,7 @@ nav:
   - Instalación: install.md
   - Uso rápido: usage.md
   - Arquitectura: architecture.md
+  - Base de datos: ER_analysis.md
   - Referencia API:
       - Repositorios: api/repository.md
       - Servicios: api/services.md
