@@ -1,12 +1,12 @@
 # requirements-dev.txt
-black
-isort
-flake8
+black                # Formateador de código
+isort                # Ordenar imports
+flake8               # Linter Python
 flake8-bugbear
 flake8-docstrings
 mypy
 pre-commit
-pytest
+pytest               # Pruebas unitarias
 pytest-postgresql
 pyinstaller
 sphinx
@@ -14,6 +14,4 @@ mkdocs-material
 mkdocstrings[python]
 pymdown-extensions
 mkdocs-mermaid2-plugin
-pytest>=7.0
 pytest-cov>=4.0
-pytest-postgresql

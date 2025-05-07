@@ -1,7 +1,10 @@
 # requirements.txt (runtime)
-pandas>=2.2
+pandas               # Manipulación de datos y DataFrames
 openpyxl>=3.1
-psycopg2-binary>=2.9
+psycopg2-binary      # Driver para conectar con PostgreSQL
 python-decouple>=3.8
-tkcalendar>=1.6
+tkcalendar           # Widget DatePicker para Tkinter
 pillow>=10.2
+XlsxWriter           # Motor para exportar DataFrame → Excel
+reportlab            # Generación de archivos PDF
+python-dateutil      # Parseo y manejo avanzado de fechas
