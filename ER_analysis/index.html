@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../architecture/">
       
       
-        <link rel="next" href="../usage/">
+        <link rel="next" href="../api/repository/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Instalación - Matex AdminDB</title>
+        <title>Base de datos - Matex AdminDB</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#instalacion" class="md-skip">
+        <a href="#analisis-del-diagrama-er" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Instalación
+              Base de datos
             
           </span>
         </div>
@@ -279,32 +279,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Instalación
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../install/" class="md-nav__link">
         
   
   
@@ -315,107 +293,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-requisitos" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Requisitos
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-clona-el-repositorio" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Clona el repositorio
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-crea-y-activa-un-entorno-virtual" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Crea y activa un entorno virtual
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-instala-dependencias" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Instala dependencias
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-copia-y-edita-el-archivo-env" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Copia y edita el archivo .env
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-prepara-la-base-de-datos" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Prepara la base de datos
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-lanza-la-aplicacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Lanza la aplicación
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-actualizar-dependencias" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Actualizar dependencias
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-desinstalar-limpiar" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Desinstalar / limpiar
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -468,10 +345,32 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../ER_analysis/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Base de datos
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -482,6 +381,71 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-tabla-productos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Tabla productos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tabla-precios" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Tabla precios
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tabla-ventas" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Tabla ventas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tabla-ventas_producto" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Tabla ventas_producto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-restricciones-y-claves" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Restricciones y claves
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -634,81 +598,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-requisitos" class="md-nav__link">
+  <a href="#1-tabla-productos" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Requisitos
+      1. Tabla productos
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-clona-el-repositorio" class="md-nav__link">
+  <a href="#2-tabla-precios" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Clona el repositorio
+      2. Tabla precios
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-crea-y-activa-un-entorno-virtual" class="md-nav__link">
+  <a href="#3-tabla-ventas" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Crea y activa un entorno virtual
+      3. Tabla ventas
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-instala-dependencias" class="md-nav__link">
+  <a href="#4-tabla-ventas_producto" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Instala dependencias
+      4. Tabla ventas_producto
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-copia-y-edita-el-archivo-env" class="md-nav__link">
+  <a href="#5-restricciones-y-claves" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Copia y edita el archivo .env
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-prepara-la-base-de-datos" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Prepara la base de datos
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-lanza-la-aplicacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Lanza la aplicación
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-actualizar-dependencias" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Actualizar dependencias
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-desinstalar-limpiar" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Desinstalar / limpiar
+      5. Restricciones y claves
     </span>
   </a>
   
@@ -730,7 +658,7 @@
 
 
   
-    <a href="https://github.com/Matic539/App-MatexDB/edit/master/docs/install.md" title="Editar esta página" class="md-content__button md-icon">
+    <a href="https://github.com/Matic539/App-MatexDB/edit/master/docs/ER_analysis.md" title="Editar esta página" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -738,113 +666,60 @@
   
 
 
-<h1 id="instalacion">Instalación</h1>
-<blockquote>
-<p><strong>Tiempo estimado:</strong> 5 – 10 min<br />
-Funciona en <strong>Windows, macOS y Linux</strong>. Solo necesitas Python ≥ 3.11 y una
-instancia local de PostgreSQL (o remota si ya la tienes).</p>
-</blockquote>
-<hr />
-<h2 id="1-requisitos">1. Requisitos</h2>
-<table>
-<thead>
-<tr>
-<th>Software</th>
-<th>Versión mínima</th>
-<th>Comprobación</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Python</td>
-<td>3.11</td>
-<td><code>python --version</code></td>
-</tr>
-<tr>
-<td>pip</td>
-<td>23</td>
-<td><code>pip --version</code></td>
-</tr>
-<tr>
-<td>Git</td>
-<td>2.30</td>
-<td><code>git --version</code></td>
-</tr>
-<tr>
-<td>PostgreSQL</td>
-<td>13</td>
-<td><code>psql --version</code></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>En Windows puedes instalar <strong>Python</strong> desde
-<a href="https://www.python.org/">https://www.python.org/</a> y <strong>PostgreSQL</strong> con
-<a href="https://www.postgresql.org/download/">https://www.postgresql.org/download/</a>.<br>
-Asegúrate de marcar “Add Python to PATH” y anotar la contraseña de <code>postgres</code>
-durante la instalación de Postgres.</p>
-</blockquote>
-<hr />
-<h2 id="2-clona-el-repositorio">2. Clona el repositorio</h2>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Matic539/App-MatexDB.git
-<span class="nb">cd</span><span class="w"> </span>App-MatexDB
-</code></pre></div>
-<hr />
-<h2 id="3-crea-y-activa-un-entorno-virtual">3. Crea y activa un entorno virtual</h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># Windows PowerShell</span>
-python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
-.<span class="se">\v</span>env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
-
-<span class="c1"># macOS / Linux</span>
-python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
-<span class="nb">source</span><span class="w"> </span>venv/bin/activate
-</code></pre></div>
-<blockquote>
-<p>Verás el prefijo (venv) en la consola.<br>
-Para salir del entorno más tarde: deactivate.</p>
-</blockquote>
-<hr />
-<h2 id="4-instala-dependencias">4. Instala dependencias</h2>
-<p><div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-</code></pre></div>
-Si vas a trabajar en el código (hooks, docs, tests):
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-dev.txt
-pre-commit<span class="w"> </span>install<span class="w">   </span><span class="c1"># activa los hooks de calidad</span>
-</code></pre></div></p>
-<hr />
-<h2 id="5-copia-y-edita-el-archivo-env">5. Copia y edita el archivo .env</h2>
-<p><div class="highlight"><pre><span></span><code>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
-</code></pre></div>
-Abre .env y ajusta si es necesario:
-<div class="highlight"><pre><span></span><code><span class="nv">DB_NAME</span><span class="o">=</span>matex_db
-<span class="nv">DB_USER</span><span class="o">=</span>postgres
-<span class="nv">DB_PASSWORD</span><span class="o">=</span>postgres<span class="w">   </span><span class="c1"># ← tu contraseña</span>
-<span class="nv">DB_HOST</span><span class="o">=</span>localhost
-<span class="nv">DB_PORT</span><span class="o">=</span><span class="m">5432</span>
-</code></pre></div></p>
-<hr />
-<h2 id="6-prepara-la-base-de-datos">6. Prepara la base de datos</h2>
-<ol>
-<li>Crea la BD y las tablas:
-(En la carpeta db/ se encuentra el schema.sql de la database.)</li>
-</ol>
-<hr />
-<h2 id="7-lanza-la-aplicacion">7. Lanza la aplicación</h2>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>app.main
-</code></pre></div>
-<blockquote>
-<p>La ventana Matex vX.Y.Z — Administrador de Ventas debería abrirse sin errores.</p>
-</blockquote>
-<hr />
-<h2 id="8-actualizar-dependencias">8. Actualizar dependencias</h2>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>list<span class="w"> </span>--outdated<span class="w">        </span><span class="c1"># muestra paquetes</span>
-pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>&lt;paquete&gt;<span class="w">   </span><span class="c1"># actualiza uno</span>
-</code></pre></div>
-<hr />
-<h2 id="9-desinstalar-limpiar">9. Desinstalar / limpiar</h2>
-<div class="highlight"><pre><span></span><code>deactivate<span class="w">         </span><span class="c1"># sale del venv</span>
-rm<span class="w"> </span>-rf<span class="w"> </span>venv<span class="w">        </span><span class="c1"># elimina el entorno virtual</span>
-</code></pre></div>
+<h1 id="analisis-del-diagrama-er">Análisis del Diagrama ER</h1>
+<p>Este documento describe la estructura de la base de datos <code>matex_db</code>, incluyendo tablas, columnas, relaciones y restricciones.</p>
+<h2 id="1-tabla-productos">1. Tabla <strong>productos</strong></h2>
+<ul>
+<li><strong>Descripción</strong>: Almacena la información básica de cada producto.</li>
+<li><strong>Columnas</strong>:  </li>
+<li><code>id_producto</code> (INT): Clave primaria, identificador único de producto.  </li>
+<li><code>nombre</code> (TEXT): Nombre descriptivo del producto.  </li>
+<li><code>stock</code> (INT): Cantidad disponible en inventario. :contentReference[oaicite:0]{index=0}:contentReference[oaicite:1]{index=1}</li>
+</ul>
+<h2 id="2-tabla-precios">2. Tabla <strong>precios</strong></h2>
+<ul>
+<li><strong>Descripción</strong>: Contiene los datos de precios asociados a productos.</li>
+<li><strong>Columnas</strong>:  </li>
+<li><code>id_producto</code> (INT): Clave primaria y foránea, referencia a <code>productos.id_producto</code>.  </li>
+<li><code>precio_neto</code> (NUMERIC): Precio de venta sin impuestos.  </li>
+<li><code>costo_neto</code> (NUMERIC): Costo neto.  </li>
+<li><code>utilidad_neta</code> (NUMERIC): Ganancia neta.  </li>
+<li><strong>Relación</strong>:  </li>
+<li>1 <strong>Producto</strong> ↔ 0..1 <strong>Precios</strong> (un producto puede tener cero o un registro de precio) :contentReference[oaicite:2]{index=2}:contentReference[oaicite:3]{index=3}</li>
+</ul>
+<h2 id="3-tabla-ventas">3. Tabla <strong>ventas</strong></h2>
+<ul>
+<li><strong>Descripción</strong>: Registra cada transacción de venta.</li>
+<li><strong>Columnas</strong>:  </li>
+<li><code>id_venta</code> (INT): Clave primaria de la venta.  </li>
+<li><code>fecha</code> (DATE): Fecha de realización de la venta.  </li>
+<li><code>forma_pago</code> (TEXT): Medio de pago utilizado.  </li>
+<li><code>monto_total</code> (NUMERIC): Suma total de la venta.  </li>
+<li><code>total_productos</code> (INT): Número de ítems vendidos. :contentReference[oaicite:4]{index=4}:contentReference[oaicite:5]{index=5}</li>
+</ul>
+<h2 id="4-tabla-ventas_producto">4. Tabla <strong>ventas_producto</strong></h2>
+<ul>
+<li><strong>Descripción</strong>: Detalle de productos incluidos en cada venta.</li>
+<li><strong>Columnas</strong>:  </li>
+<li><code>id_venta</code> (INT): Clave foránea a <code>ventas.id_venta</code>.  </li>
+<li><code>id_producto</code> (INT): Clave foránea a <code>productos.id_producto</code>.  </li>
+<li><code>cantidad</code> (INT): Cantidad del producto vendido.  </li>
+<li><code>monto_producto</code> (NUMERIC): Precio total de ese producto en la venta.  </li>
+<li><strong>Relaciones</strong>:  </li>
+<li>1 <strong>Venta</strong> ↔ * <strong>ventas_producto</strong> (una venta puede incluir múltiples productos) :contentReference[oaicite:6]{index=6}:contentReference[oaicite:7]{index=7}  </li>
+<li>1 <strong>Producto</strong> ↔ * <strong>ventas_producto</strong> (un producto puede aparecer en varias ventas) :contentReference[oaicite:8]{index=8}:contentReference[oaicite:9]{index=9}</li>
+</ul>
+<h2 id="5-restricciones-y-claves">5. Restricciones y claves</h2>
+<ul>
+<li><strong>Claves primarias (PK)</strong>:  </li>
+<li><code>productos.id_producto</code>  </li>
+<li><code>precios.id_producto</code>  </li>
+<li><code>ventas.id_venta</code>  </li>
+<li><strong>Claves foráneas (FK)</strong>:  </li>
+<li><code>precios.id_producto</code> → <code>productos.id_producto</code>  </li>
+<li><code>ventas_producto.id_venta</code> → <code>ventas.id_venta</code>  </li>
+<li><code>ventas_producto.id_producto</code> → <code>productos.id_producto</code></li>
+</ul>
 
 
 
