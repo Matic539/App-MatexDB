@@ -1,0 +1,113 @@
+# Servicio de Reportes de Ventas para la app de escritorio
+reportes:
+
+  # 1. Resumen de ventas: totales, cantidad y ticket promedio
+  get_summary_report:
+    description: >
+      Calcula el total de ventas netas, cantidad de ventas y ticket promedio
+      en un rango de fechas.
+    parameters:
+      - name: start_date
+        type: date
+        format: YYYY-MM-DD
+        required: true
+        description: Fecha de inicio del rango.
+      - name: end_date
+        type: date
+        format: YYYY-MM-DD
+        required: true
+        description: Fecha de fin del rango.
+    returns:
+      type: object
+      properties:
+        ventas_netas:
+          type: number
+          description: Suma de monto_total de todas las ventas.
+        cantidad_ventas:
+          type: integer
+          description: Número de ventas en el rango.
+        ticket_promedio:
+          type: number
+          description: Promedio de monto_total por venta.
+    errors:
+      - name: RangeError
+        description: Fecha fin anterior a fecha inicio.
+      - name: DatabaseError
+        description: Fallo al ejecutar la consulta en la base de datos.
+
+  # 2. Top 5 productos por cantidad vendida
+  get_top_quantity_report:
+    description: >
+      Obtiene los 5 productos con mayor cantidad vendida en el rango.
+    parameters: *get_summary_report.parameters
+    returns:
+      type: array
+      items:
+        type: object
+        properties:
+          nombre:
+            type: string
+            description: Nombre del producto.
+          total_cantidad:
+            type: integer
+            description: Suma de unidades vendidas.
+    errors: *get_summary_report.errors
+
+  # 3. Top 5 productos por ingresos netos
+  get_top_revenue_report:
+    description: >
+      Obtiene los 5 productos que generaron mayores ingresos netos
+      (SUM(monto_producto)) en el rango.
+    parameters: *get_summary_report.parameters
+    returns:
+      type: array
+      items:
+        type: object
+        properties:
+          nombre:
+            type: string
+          total_ingresos:
+            type: number
+    errors: *get_summary_report.errors
+
+  # 4. Top productos por utilidad neta
+  get_top_profit_report:
+    description: >
+      Obtiene los productos ordenados por su utilidad neta total
+      (SUM(cantidad * utilidad_neta)) en el rango.
+    parameters: *get_summary_report.parameters
+    returns:
+      type: array
+      items:
+        type: object
+        properties:
+          nombre:
+            type: string
+          utilidad_total:
+            type: number
+    errors: *get_summary_report.errors
+
+  # 5. Exportación de reportes
+  export_report:
+    description: >
+      Genera un archivo (.xlsx o .pdf) a partir de un objeto de reporte
+      previamente obtenido por cualquiera de los servicios anteriores.
+    parameters:
+      - name: report_data
+        type: object
+        description: Objeto devuelto por cualquiera de los métodos get_*_report.
+      - name: format
+        type: string
+        enum: [excel, pdf]
+        required: true
+        description: Formato de exportación.
+      - name: destination_path
+        type: string
+        required: true
+        description: Ruta de archivo donde guardar el reporte.
+    returns:
+      type: string
+      description: Ruta completa del archivo generado.
+    errors:
+      - name: ExportError
+        description: Error al generar o guardar el archivo.
