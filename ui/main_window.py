@@ -10,6 +10,7 @@ from ui.ventas.eliminar_tab import EliminarTab
 from ui.ventas.historial_tab import HistorialTab
 from ui.ventas.ingreso_tab import IngresoTab
 from ui.ventas.inventario_tab import InventarioTab
+from ui.ventas.reportes_tab import ReportesTab
 
 
 class MainWindow(tk.Tk):
@@ -17,10 +18,11 @@ class MainWindow(tk.Tk):
 
     #: Mapa *Etiqueta → Clase de pestaña*
     TABS = {
-        "Ingreso de Ventas": IngresoTab,
-        "Historial de Ventas": HistorialTab,
-        "Control de Inventario": InventarioTab,
-        "Eliminar Ventas": EliminarTab,
+        " Ingreso de Ventas ": IngresoTab,
+        " Historial de Ventas ": HistorialTab,
+        " Control de Inventario ": InventarioTab,
+        " Reportes ": ReportesTab,
+        " Eliminar Ventas ": EliminarTab,
     }
 
     def __init__(self) -> None:
