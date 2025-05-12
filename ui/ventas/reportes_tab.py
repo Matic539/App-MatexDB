@@ -97,10 +97,12 @@ class ReportesTab(ttk.Frame):
             tree.delete(*tree.get_children())
             data = self.report_data.get(title, [])
             if isinstance(data, dict):
-                tree.insert("", "end", values=list(data.values()))
+                vals = [self._fmt_number(v) for v in data.values()]
+                tree.insert("", "end", values=vals)
             else:
                 for row in data:
-                    tree.insert("", "end", values=tuple(row.values()))
+                    vals = [self._fmt_number(v) if isinstance(v, (int, float)) else v for v in row.values()]
+                    tree.insert("", "end", values=vals)
 
         # Habilitar botones de exportación
         self.btn_export_excel.configure(state="normal")
@@ -137,3 +139,8 @@ class ReportesTab(ttk.Frame):
             messagebox.showinfo("Éxito", f"Reporte PDF guardado en:\n{path}")
         except ExportError as e:
             messagebox.showerror("Error exportando PDF", str(e))
+
+    @staticmethod
+    def _fmt_number(value: int | float) -> str:
+        """Devuelve el número con separador de miles por comas. Ej: 1000000 → '1,000,000'."""
+        return f"{value:,.0f}"
