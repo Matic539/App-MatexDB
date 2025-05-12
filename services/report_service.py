@@ -1,4 +1,4 @@
-"""Provide report generation and export utilities for the application."""
+"""Proporciona utilidades de generación y exportación de informes para la aplicación."""
 
 import os
 from datetime import date
@@ -9,38 +9,49 @@ from reportlab.lib.pagesizes import landscape, letter
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
-
-# -------------------------------------------------------------------
-# Service functions (implement or import from repository/report_repository)
-# -------------------------------------------------------------------
-def get_summary_report(start_date: date, end_date: date) -> dict:
-    """Devuelve las métricas de resumen de ventas para el rango de fechas indicado."""
-    # TODO: llamar a repository.report_repository.fetch_summary(...)
-    raise NotImplementedError
-
-
-def get_top_quantity_report(start_date: date, end_date: date) -> list[dict]:
-    """Devuelve los top 5 productos por cantidad vendida en el rango de fechas indicado."""
-    # TODO: llamar a repository.report_repository.fetch_top_quantity(...)
-    raise NotImplementedError
-
-
-def get_top_revenue_report(start_date: date, end_date: date) -> list[dict]:
-    """Devuelve los top 5 productos por ingresos en el rango de fechas indicado."""
-    # TODO: llamar a repository.report_repository.fetch_top_revenue(...)
-    raise NotImplementedError
-
-
-def get_top_profit_report(start_date: date, end_date: date) -> list[dict]:
-    """Devolver productos ordenados por beneficio total en el rango de fechas indicado."""
-    # TODO: llamar a repository.report_repository.fetch_top_profit(...)
-    raise NotImplementedError
+from repository.report_repository import (
+    fetch_summary,
+    fetch_top_profit,
+    fetch_top_quantity,
+    fetch_top_revenue,
+)
 
 
 class ExportError(Exception):
     """Error al exportar reportes a archivos."""
 
     pass
+
+
+def get_summary_report(start_date: date, end_date: date) -> dict:
+    """Obtiene los totales de venta, cantidad de ventas y ticket promedio para el rango de fechas indicado."""
+    raw = fetch_summary(start_date, end_date)
+    # Redondear y convertir a entero
+    return {
+        "ventas_netas": int(round(raw["ventas_netas"])),
+        "cantidad_ventas": int(raw["cantidad_ventas"]),
+        "ticket_promedio": int(round(raw["ticket_promedio"])),
+    }
+
+
+def get_top_quantity_report(start_date: date, end_date: date) -> list[dict]:
+    """Obtiene los 5 productos con mayor cantidad vendida en el rango de fechas indicado."""
+    items = fetch_top_quantity(start_date, end_date)
+    return [{"nombre": i["nombre"], "total_cantidad": int(i["total_cantidad"])} for i in items]
+
+
+def get_top_revenue_report(start_date: date, end_date: date) -> list[dict]:
+    """Obtiene los 5 productos que generaron mayores ingresos netos en el rango de fechas indicado."""
+    items = fetch_top_revenue(start_date, end_date)
+    # redondear ingresos a entero
+    return [{"nombre": i["nombre"], "total_ingresos": int(round(i["total_ingresos"]))} for i in items]
+
+
+def get_top_profit_report(start_date: date, end_date: date) -> list[dict]:
+    """Obtiene los productos ordenados por utilidad neta total en el rango de fechas indicado."""
+    items = fetch_top_profit(start_date, end_date)
+    # redondear utilidad a entero
+    return [{"nombre": i["nombre"], "utilidad_total": int(round(i["utilidad_total"]))} for i in items]
 
 
 def export_report(report_data: dict, format: str, destination_path: str) -> str:
