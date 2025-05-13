@@ -96,7 +96,6 @@ def _export_to_excel(report_data: dict, path: str):
             # Capitalizar títulos de columna
             df.columns = [col.replace("_", " ").title() for col in df.columns]
             df.to_excel(writer, sheet_name=sheet_name[:31], index=False)
-        writer.save()
 
 
 def _export_to_pdf(report_data: dict, path: str):
