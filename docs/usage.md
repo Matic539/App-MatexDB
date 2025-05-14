@@ -49,7 +49,24 @@ Para eliminar un producto, selecciónalo y pulsa **Eliminar Producto**.
 
 ---
 
-## 4. Eliminar Ventas
+## 4. Uso de la pestaña Reportes
+
+La pestaña **Reportes** permite generar y exportar métricas de ventas en un rango de fechas:
+
+1. Haz clic en **Reportes** en la barra de pestañas.  
+2. Selecciona la **Fecha inicio** y **Fecha fin** con los DatePickers.  
+3. Pulsa **Generar reporte**:
+   - Se mostrarán cuatro tablas:  
+     - **Resumen**: ventas netas, cantidad de ventas y ticket promedio.  
+     - **Top Cantidad**: productos más vendidos por unidades.  
+     - **Top Ingresos**: productos con mayores ingresos netos.  
+     - **Top Utilidad**: productos con mayor utilidad neta.
+4. Pulsa **Exportar Excel** o **Exportar PDF** para descargar el informe en el formato deseado.
+5. Los valores están calculados sobre precio neto (sin IVA), redondeados a entero y formateados con separador de miles (por ejemplo, `1,234,567`).
+
+---
+
+## 5. Eliminar Ventas
 
 En la pestaña **Eliminar Ventas** introduce el **ID de venta** y pulsa **Eliminar**.  
 El stock de cada producto se restaura automáticamente.
@@ -58,7 +75,7 @@ El stock de cada producto se restaura automáticamente.
 
 ---
 
-## 5. Atajos de teclado
+## 6. Atajos de teclado
 
 | Acción                     | Tecla |
 |----------------------------|-------|
@@ -68,7 +85,7 @@ El stock de cada producto se restaura automáticamente.
 
 ---
 
-## 6. Directorios generados
+## 7. Directorios generados
 
 | Carpeta / Archivo            | Contenido |
 |------------------------------|-----------|
@@ -79,7 +96,7 @@ El stock de cada producto se restaura automáticamente.
 
 ---
 
-## 7. Preguntas frecuentes
+## 8. Preguntas frecuentes
 
 <details>
 <summary>¿Puedo anular solo un producto dentro de una venta?</summary>
