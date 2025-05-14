@@ -1,51 +1,53 @@
 import os
+from datetime import date
+
 import pandas as pd
 import pytest
-from datetime import date
+
 from services import report_service
+
 
 def test_get_summary_report_rounding(monkeypatch):
     """Verifica que get_summary_report redondee correctamente al entero."""
-    raw = {'ventas_netas': 123.6, 'cantidad_ventas': 2, 'ticket_promedio': 61.3}
+    raw = {"ventas_netas": 123.6, "cantidad_ventas": 2, "ticket_promedio": 61.3}
     # Monkeypatch al repositorio
-    monkeypatch.setattr(report_service, 'fetch_summary', lambda s, e: raw)
-    out = report_service.get_summary_report(date(2025,5,1), date(2025,5,2))
-    assert out == {'ventas_netas': 124, 'cantidad_ventas': 2, 'ticket_promedio': 61}
+    monkeypatch.setattr(report_service, "fetch_summary", lambda s, e: raw)
+    out = report_service.get_summary_report(date(2025, 5, 1), date(2025, 5, 2))
+    assert out == {"ventas_netas": 124, "cantidad_ventas": 2, "ticket_promedio": 61}
+
 
 def test_get_top_reports_rounding(monkeypatch):
-    raw_q = [{'nombre': 'A', 'total_cantidad': 5.0}]
-    raw_r = [{'nombre': 'A', 'total_ingresos': 250.7}]
-    raw_p = [{'nombre': 'A', 'utilidad_total': 80.2}]
-    monkeypatch.setattr(report_service, 'fetch_top_quantity',  lambda s,e: raw_q)
-    monkeypatch.setattr(report_service, 'fetch_top_revenue',   lambda s,e: raw_r)
-    monkeypatch.setattr(report_service, 'fetch_top_profit',    lambda s,e: raw_p)
+    raw_q = [{"nombre": "A", "total_cantidad": 5.0}]
+    raw_r = [{"nombre": "A", "total_ingresos": 250.7}]
+    raw_p = [{"nombre": "A", "utilidad_total": 80.2}]
+    monkeypatch.setattr(report_service, "fetch_top_quantity", lambda s, e: raw_q)
+    monkeypatch.setattr(report_service, "fetch_top_revenue", lambda s, e: raw_r)
+    monkeypatch.setattr(report_service, "fetch_top_profit", lambda s, e: raw_p)
 
-    q = report_service.get_top_quantity_report(date(2025,5,1), date(2025,5,2))
-    r = report_service.get_top_revenue_report(date(2025,5,1), date(2025,5,2))
-    p = report_service.get_top_profit_report(date(2025,5,1), date(2025,5,2))
+    q = report_service.get_top_quantity_report(date(2025, 5, 1), date(2025, 5, 2))
+    r = report_service.get_top_revenue_report(date(2025, 5, 1), date(2025, 5, 2))
+    p = report_service.get_top_profit_report(date(2025, 5, 1), date(2025, 5, 2))
 
-    assert q == [{'nombre': 'A', 'total_cantidad': 5}]
-    assert r == [{'nombre': 'A', 'total_ingresos': 251}]
-    assert p == [{'nombre': 'A', 'utilidad_total': 80}]
+    assert q == [{"nombre": "A", "total_cantidad": 5}]
+    assert r == [{"nombre": "A", "total_ingresos": 251}]
+    assert p == [{"nombre": "A", "utilidad_total": 80}]
+
 
 def test_export_report_excel(tmp_path):
     """Genera un Excel y comprueba su contenido."""
-    data = {
-        'Resumen': {'ventas_netas': 1000, 'cantidad_ventas': 3, 'ticket_promedio': 333}
-    }
+    data = {"Resumen": {"ventas_netas": 1000, "cantidad_ventas": 3, "ticket_promedio": 333}}
     out = tmp_path / "rep.xlsx"
-    report_service.export_report(data, 'excel', str(out))
+    report_service.export_report(data, "excel", str(out))
     assert out.exists()
     # Lectura con pandas
-    df = pd.read_excel(out, sheet_name='Resumen')
-    assert list(df.columns) == ['Ventas Netas', 'Cantidad Ventas', 'Ticket Promedio']
+    df = pd.read_excel(out, sheet_name="Resumen")
+    assert list(df.columns) == ["Ventas Netas", "Cantidad Ventas", "Ticket Promedio"]
     assert df.iloc[0].to_list() == [1000, 3, 333]
+
 
 def test_export_report_pdf(tmp_path):
     """Genera un PDF y comprueba que el archivo no está vacío."""
-    data = {
-        'Resumen': {'ventas_netas': 500, 'cantidad_ventas': 2, 'ticket_promedio': 250}
-    }
+    data = {"Resumen": {"ventas_netas": 500, "cantidad_ventas": 2, "ticket_promedio": 250}}
     out = tmp_path / "rep.pdf"
-    report_service.export_report(data, 'pdf', str(out))
+    report_service.export_report(data, "pdf", str(out))
     assert out.exists() and out.stat().st_size > 0
