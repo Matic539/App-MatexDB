@@ -1,5 +1,4 @@
-import os
-from datetime import date
+from datetime import date, timedelta
 
 import pandas as pd
 import pytest
@@ -51,3 +50,62 @@ def test_export_report_pdf(tmp_path):
     out = tmp_path / "rep.pdf"
     report_service.export_report(data, "pdf", str(out))
     assert out.exists() and out.stat().st_size > 0
+
+
+def test_get_comparison_report_nonzero(monkeypatch):
+    """Verifica variaciones cuando el periodo anterior tiene valores > 0."""
+    # Datos de ejemplo
+    actual = {"ventas_netas": 200, "cantidad_ventas": 4, "ticket_promedio": 50}
+    anterior = {"ventas_netas": 100, "cantidad_ventas": 2, "ticket_promedio": 25}
+
+    start = date(2025, 2, 1)
+    end = date(2025, 2, 15)
+    days = 15
+    prev_end = start - timedelta(days=1)
+    prev_start = prev_end - timedelta(days=days - 1)
+
+    def fake_get_summary(s, e):
+        if s == start and e == end:
+            return actual
+        elif s == prev_start and e == prev_end:
+            return anterior
+        else:
+            pytest.skip(f"Called with unexpected dates: {s}–{e}")
+
+    monkeypatch.setattr(report_service, "get_summary_report", fake_get_summary)
+
+    comp = report_service.get_comparison_report(start, end, days)
+    assert comp["actual"] == actual
+    assert comp["anterior"] == anterior
+
+    # variaciones porcentuales
+    assert comp["variacion"]["ventas_netas"] == pytest.approx((200 - 100) / 100)
+    assert comp["variacion"]["cantidad_ventas"] == pytest.approx((4 - 2) / 2)
+    assert comp["variacion"]["ticket_promedio"] == pytest.approx((50 - 25) / 25)
+
+
+def test_get_comparison_report_zero_previous(monkeypatch):
+    """Verifica que si el periodo anterior es cero, la variación sea 1.0 o 0.0."""
+    actual = {"ventas_netas": 0, "cantidad_ventas": 0, "ticket_promedio": 0}
+    anterior = {"ventas_netas": 0, "cantidad_ventas": 0, "ticket_promedio": 0}
+
+    start = date(2025, 3, 1)
+    end = date(2025, 3, 10)
+    days = 5
+    prev_end = start - timedelta(days=1)
+    prev_start = prev_end - timedelta(days=days - 1)
+
+    def fake_get_summary(s, e):
+        # siempre devolvemos el mismo dict mockeado
+        return actual if (s == start and e == end) else anterior
+
+    monkeypatch.setattr(report_service, "get_summary_report", fake_get_summary)
+
+    comp = report_service.get_comparison_report(start, end, days)
+    assert comp["actual"] == actual
+    assert comp["anterior"] == anterior
+
+    # Como anterior todos ceros:
+    # - si actual > 0 variación = 1.0, pero aquí actual es cero → variación = 0.0
+    for key, val in comp["variacion"].items():
+        assert val == 0.0
