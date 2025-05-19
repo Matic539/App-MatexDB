@@ -1,7 +1,7 @@
 """Proporciona utilidades de generación y exportación de informes para la aplicación."""
 
 import os
-from datetime import date
+from datetime import date, timedelta
 
 import pandas as pd
 from reportlab.lib import colors
@@ -52,6 +52,40 @@ def get_top_profit_report(start_date: date, end_date: date) -> list[dict]:
     items = fetch_top_profit(start_date, end_date)
     # redondear utilidad a entero
     return [{"nombre": i["nombre"], "utilidad_total": int(round(i["utilidad_total"]))} for i in items]
+
+
+def get_comparison_report(start_date: date, end_date: date, days: int) -> dict:
+    """
+    Obtiene un comparativo entre el periodo actual y el periodo anterior.
+
+    Args:
+        start_date: Fecha de inicio del periodo actual.
+        end_date:   Fecha de fin del periodo actual.
+        days:       Número de días hacia atrás para el periodo anterior.
+
+    Returns:
+        {
+            "actual":    {...},  # {'ventas_netas': int, 'cantidad_ventas': int, 'ticket_promedio': int}
+            "anterior":  {...},  # mismos keys para el periodo anterior
+            "variacion": {...}   # variación porcentual: (actual - anterior) / anterior
+        }
+    """
+    # Definir rango anterior: termina justo un día antes del inicio actual
+    prev_end = start_date - timedelta(days=1)
+    prev_start = prev_end - timedelta(days=days - 1)
+    # Resúmenes ya redondeados e formateados por get_summary_report
+    actual = get_summary_report(start_date, end_date)
+    anterior = get_summary_report(prev_start, prev_end)
+    # Calcular variaciones porcentuales
+    variacion = {}
+    for key in actual:
+        prev = anterior.get(key, 0)
+        curr = actual.get(key, 0)
+        if prev:
+            variacion[key] = (curr - prev) / prev
+        else:
+            variacion[key] = 1.0 if curr else 0.0
+    return {"actual": actual, "anterior": anterior, "variacion": variacion}
 
 
 def export_report(report_data: dict, format: str, destination_path: str) -> str:
