@@ -123,12 +123,22 @@ def _export_to_excel(report_data: dict, path: str):
     """H interno: escribe report data a un Excel con una hoja por sección."""
     with pd.ExcelWriter(path, engine="xlsxwriter") as writer:
         for sheet_name, data in report_data.items():
-            if isinstance(data, dict):
-                df = pd.DataFrame([data])
+            if sheet_name == "Comparativo":
+                # data tiene keys "actual","anterior","variacion"
+                # armamos filas por métrica
+                rows = []
+                for key, actual in data["actual"].items():
+                    anterior = data["anterior"][key]
+                    vari = data["variacion"][key]
+                    rows.append({"Métrica": key.replace("_", " ").title(), "Actual": actual, "Anterior": anterior, "Variación (%)": f"{vari:.2%}"})
+                df = pd.DataFrame(rows)
             else:
-                df = pd.DataFrame(data)
-            # Capitalizar títulos de columna
-            df.columns = [col.replace("_", " ").title() for col in df.columns]
+                # resto de hojas igual que antes
+                if isinstance(data, dict):
+                    df = pd.DataFrame([data])
+                else:
+                    df = pd.DataFrame(data)
+                df.columns = [col.replace("_", " ").title() for col in df.columns]
             df.to_excel(writer, sheet_name=sheet_name[:31], index=False)
 
 
@@ -144,12 +154,20 @@ def _export_to_pdf(report_data: dict, path: str):
         story.append(Spacer(1, 12))
 
         # Preparar datos para la tabla
-        if isinstance(data, dict):
-            cols = list(data.keys())
-            rows = [list(data.values())]
+        if title == "Comparativo":
+            cols = ["Métrica", "Actual", "Anterior", "Variación (%)"]
+            rows = []
+            for key, actual in data["actual"].items():
+                anterior = data["anterior"][key]
+                vari = f"{data['variacion'][key]:.2%}"
+                rows.append([key.replace("_", " ").title(), actual, anterior, vari])
         else:
-            cols = list(data[0].keys()) if data else []
-            rows = [list(item.values()) for item in data]
+            if isinstance(data, dict):
+                cols = list(data.keys())
+                rows = [list(data.values())]
+            else:
+                cols = list(data[0].keys()) if data else []
+                rows = [list(item.values()) for item in data]
 
         table_data = [cols] + rows
         tbl = Table(table_data, hAlign="CENTER")
